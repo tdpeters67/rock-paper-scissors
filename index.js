@@ -15,3 +15,36 @@ choiceBtns.forEach(button => button.addEventListener("click", () => {
     computerText.textContent = `Computer: ${computer}`
     resultText.textContent = checkWinner()
 }))
+
+
+function computerTurn(){
+    const randNum = Math.floor(Math.random() * 3) + 1
+
+    switch(randNum){
+        case 1:
+            computer = "BOULDER"
+            break
+        case 2:
+            computer = "PARCHMENT"
+            break 
+        case 3:
+            computer = "SHEARS"
+            break     
+    
+    }
+}
+
+function checkWinner (){
+    if(player == computer){
+        return "Draw!"
+    }
+    else if (computer == "BOULDER"){
+        return (player == "PARCHMENT") ? "You Win!" : "You Lose!"
+    }
+    else if (computer == "PARCHMENT"){
+        return (player == "SHEARS") ? "You Win!" : "You Lose!"
+    }
+    else if (computer == "SHEARS"){
+        return (player == "BOULDER") ? "You Win!" : "You Lose!"
+    }
+}
