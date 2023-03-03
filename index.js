@@ -13,9 +13,11 @@ let result
 playGame()
 
 function playGame(){
+    for (let i = 0; i < 5; i++) {
+
     let playerPoint = 0
     let computerPoint = 0
-
+    
     playRound()
 
     if (resultText == "You Win!"){
@@ -27,13 +29,13 @@ function playGame(){
     
     playerScore.textContent = `Player: ${playerPoint}`
     computerScore.textContent = `Computer: ${computerPoint}`
-}
+}}
 
 function playRound(){
 
     choiceBtns.forEach(button => button.addEventListener("click", () => {
         player = button.textContent
-        computerTurn();
+        computerTurn()
         playerText.textContent = `Player: ${player}`
         computerText.textContent = `Computer: ${computer}`
         resultText.textContent = checkWinner()
