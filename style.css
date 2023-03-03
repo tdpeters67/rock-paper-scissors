@@ -9,7 +9,7 @@
 }
 
 .choiceBtn:hover{
-opacity: 1;
+opacity: 10;
 }
 
 #gameDiv{
@@ -22,6 +22,16 @@ background-color: wheat;
 text-align: center;
 }
 
+#scoreDiv{
+
+    font-family: Luminari, fantasy;
+    border: 3px solid;
+    border-radius: 25px;
+    padding: 10px;
+    background-color: wheat;
+    text-align: center;
+    }
+
 #playerText{
 color: darkolivegreen;
 }
@@ -30,3 +40,10 @@ color: darkolivegreen;
 color: firebrick;
 }
 
+#playerScore{
+    color: darkolivegreen;
+}
+
+#computerScore{
+    color: firebrick;
+    }
