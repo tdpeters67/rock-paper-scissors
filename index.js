@@ -48,7 +48,12 @@ function playRound(){
         }else if((round == 5) && (playerPoint == computerPoint)){
             winnerText.textContent = "There is no God!"
         }else if(round > 5){
-            window.location.reload()
+            playerText.textContent = "The game is over!"
+            computerText.textContent = "Reload the page to play again!"
+            resultText.textContent = "The game is over!"
+            roundNumber.textContent = "Reload the page to play again!"
+            playerScore.textContent = "The game is over!"
+            computerScore.textContent = "Reload the page to play again!"
         }
         
     }))
