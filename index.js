@@ -3,6 +3,7 @@ const computerText = document.querySelector("#computerText")
 const resultText = document.querySelector("#resultText")
 const choiceBtns = document.querySelectorAll(".choiceBtn")
 const choices = ["BOULDER", "PARCHMENT", "SHEARS"]
+const winnerText = document.querySelector("#winnerText")
 
 const playerScore = document.querySelector("#playerScore")
 const computerScore = document.querySelector("#computerScore")
@@ -23,8 +24,8 @@ function playGame(){
     computerPoint = 0
     round = 0
 
-    playRound()
-  
+   playRound()
+
 }
 
 function playRound(){
@@ -38,6 +39,17 @@ function playRound(){
         updateScore()
         round++
         roundNumber.textContent = `Round: ${round}`
+        
+
+        if((round == 5) && (playerPoint > computerPoint)){
+            winnerText.textContent = "You win the game!"
+        }else if((round == 5) && (playerPoint < computerPoint)){
+            winnerText.textContent = "You lost the game"
+        }else if((round == 5) && (playerPoint == computerPoint)){
+            winnerText.textContent = "There is no God!"
+        }else if(round > 5){
+            window.location.reload()
+        }
         
     }))
     }
