@@ -2,34 +2,30 @@ const playerText = document.querySelector("#playerText")
 const computerText = document.querySelector("#computerText")
 const resultText = document.querySelector("#resultText")
 const choiceBtns = document.querySelectorAll(".choiceBtn")
+const choices = ["BOULDER", "PARCHMENT", "SHEARS"]
+
 const playerScore = document.querySelector("#playerScore")
 const computerScore = document.querySelector("#computerScore")
+const roundNumber = document.querySelector("#roundNumber")
 
 
 let player
 let computer
 let result
+let playerPoint
+let computerPoint
+let round
 
 playGame()
 
 function playGame(){
-    for (let i = 0; i < 5; i++) {
+    playerPoint = 0
+    computerPoint = 0
+    round = 0
 
-    let playerPoint = 0
-    let computerPoint = 0
-    
     playRound()
-
-    if (resultText == "You Win!"){
-        playerPoint++
-    }
-    else if (resultText == "You Lose!"){
-        computerPoint++
-    }
-    
-    playerScore.textContent = `Player: ${playerPoint}`
-    computerScore.textContent = `Computer: ${computerPoint}`
-}}
+  
+}
 
 function playRound(){
 
@@ -38,39 +34,47 @@ function playRound(){
         computerTurn()
         playerText.textContent = `Player: ${player}`
         computerText.textContent = `Computer: ${computer}`
-        resultText.textContent = checkWinner()
+        checkWinner()
+        updateScore()
+        round++
+        roundNumber.textContent = `Round: ${round}`
+        
     }))
     }
 
 
 function computerTurn(){
-    const randNum = Math.floor(Math.random() * 3) + 1
-
-    switch(randNum){
-        case 1:
-            computer = "BOULDER"
-            break
-        case 2:
-            computer = "PARCHMENT"
-            break 
-        case 3:
-            computer = "SHEARS"
-            break     
-    
+    const randNum = Math.floor(Math.random() * 3)
+    computer = choices[randNum]
     }
-}
+
 
 function checkWinner(){
-    if(player == computer){
-      return "Draw!";
+    if((player == 'BOULDER' && computer == 'SHEARS') ||
+    (player == 'PARCHMENT' && computer == 'BOULDER') ||
+    (player == 'SHEARS' && computer == 'PARCHMENT')){
+       resultText.textContent = "You win the round"
+       return
+      }
+    else if(player == computer){
+        resultText.textContent = "It is a tie"
+        return
     }
-    else if(computer == "BOULDER"){
-      return (player == "PARCHMENT") ? "You Win!" : "You Lose!"
+    else{
+        resultText.textContent = "You lose the round"
+        return
     }
-    else if(computer == "PARCHMENT"){
-      return (player == "SHEARS") ? "You Win!" : "You Lose!"
+        
+}
+function updateScore(){
+    if (resultText.textContent == "You win the round"){
+        playerPoint++
+    }else if(resultText.textContent == "It is a tie"){
+        playerPoint = playerPoint
+    }else{
+        computerPoint++
     }
-    else if(computer == "SHEARS"){
-      return (player == "BOULDER") ? "You Win!" : "You Lose!"
-    }
+    playerScore.textContent = `Player: ${playerPoint}`
+    computerScore.textContent = `Computer: ${computerPoint}`
+
 }

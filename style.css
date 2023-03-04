@@ -12,6 +12,11 @@
 opacity: 10;
 }
 
+#playerDiv{
+    display: flex;
+    justify-content: space-around;
+}
+
 #gameDiv{
 
 font-family: Luminari, fantasy;
