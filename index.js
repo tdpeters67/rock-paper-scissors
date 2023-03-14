@@ -26,6 +26,8 @@ function playGame(){
 
    playRound()
 
+
+
 }
 
 function playRound(){
@@ -40,21 +42,15 @@ function playRound(){
         round++
         roundNumber.textContent = `Round: ${round}`
         
+        if((playerPoint == 5) && (playerPoint > computerPoint)){
+            alert( "You win the game!")
+            button.addEventListener("click", window.location.reload())
+        }else if((computerPoint == 5) && (playerPoint < computerPoint)){
+            alert("You lost the game")
+            button.addEventListener("click", window.location.reload())
 
-        if((round == 5) && (playerPoint > computerPoint)){
-            winnerText.textContent = "You win the game!"
-        }else if((round == 5) && (playerPoint < computerPoint)){
-            winnerText.textContent = "You lost the game"
-        }else if((round == 5) && (playerPoint == computerPoint)){
-            winnerText.textContent = "There is no God!"
-        }else if(round > 5){
-            playerText.textContent = "The game is over!"
-            computerText.textContent = "Reload the page to play again!"
-            resultText.textContent = "The game is over!"
-            roundNumber.textContent = "Reload the page to play again!"
-            playerScore.textContent = "The game is over!"
-            computerScore.textContent = "Reload the page to play again!"
         }
+        
         
     }))
     }
@@ -81,6 +77,8 @@ function checkWinner(){
         resultText.textContent = "You lose the round"
         return
     }
+
+    
         
 }
 function updateScore(){
